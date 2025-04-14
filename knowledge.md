@@ -456,11 +456,6 @@ Monsters behave a little differently than explorers do. All of the following rul
 - · Monsters move differently. At the start of a monster's turn, roll a number of dice equal to its Speed. The result is the number of spaces that monster can move that turn. For groups of the same type of monster (Bats or Zombies, for instance), just roll once for the whole group. Each monster of that type can move that many spaces that turn.
 - · Most monsters can't be killed. If a monster would take any damage, it is stunned and misses its next turn. When a monster is stunned, flip its token over to the side with the 'S.' At the end of the monster's next turn, flip it back. Stunned monsters can't slow an explorer's movement. Even if a haunt says to do something other than stun monsters when they take damage, they can still be stunned by effects that specifically stun monsters.
 - · Like explorers, a monster can attack only once during its turn. Monsters often use traits other than Might to attack. They can't make any of the special attacks listed on page 13 (unless a haunt says otherwise).
-
-
-
-
-
 - · Like the traitor, monsters can ignore any harmful text on a room tile. A monster still slides to the Basement Landing when it moves onto the Coal Chute. It can pass through the Revolving Wall without rolling. Monsters can freely move up or down from the Coal Chute and Collapsed Room, and they can climb up to the Gallery. However, monsters cannot benefit from text on a room tile that increases a trait (such as the Larder or Gymnasium).
 - · Monsters can use the special movement options described on cards (such as the Secret Stairs and Secret Passage).
 - · Monsters can't explore new rooms.
@@ -486,7 +481,7 @@ This section defines certain game terms contained in this rulebook, the haunt bo
 adjacent: Rooms are adjacent if they share a side. Diagonal is never adjacent.
 
 attack: Explorers (and monsters) can't attack until the haunt starts. Once during your turn after the haunt starts, you can make an attack roll against an opponent.
-
+circular monster tokens
 attack roll: You and your opponent both roll dice equal to your Might. Whoever gets the higher result inflicts physical damage against the loser equal to the difference (on a tie, no one gets hurt). See 'Make an Attack,' page 13.
 
 distance attack: Some weapons or special items in a haunt allow you to attack an opponent in another room within your line of sight (see that entry, page 22). You take no damage if your attack roll is less than the opponent's.
