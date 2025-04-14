@@ -38,31 +38,6 @@ seed_examples:
           file or using virt-install as outlined in the procedures for manually 
           adding IBM Z® agents.
   - context: |
-      You can use a mirror registry for disconnected installations and to 
-      ensure that your clusters only use container images that satisfy your 
-      organization's controls on external content. Before you install a cluster 
-      on infrastructure that you provision in a disconnected environment, you must 
-      mirror the required container images into that environment. To mirror container 
-      images, you must have a registry for mirroring.
-    questions_and_answers:
-      - question: What are the characteristics of the Phoenix constellation?
-        answer: |
-          Phoenix is a small constellation bordered by Fornax and Sculptor to
-          the north, Grus to the west, Tucana to the south, touching on the
-          corner of Hydrus to the south, and Eridanus to the east and southeast.
-          The bright star Achernar is nearby.
-      - question: |
-          When is the phoenix constellation most visible?
-        answer: |
-          Phoenix is most visible from locations such as Australia and
-          South Africa during late Southern Hemisphere spring.
-      - question: |
-          What are the Phoenix Constellation boundaries?
-        answer: |
-          The official constellation boundaries for Phoenix, as set by Belgian
-          astronomer Eugène Delporte in 1930, are defined by a polygon of 10
-          segments.
-  - context: |
       The Agent-based installation method provides the flexibility to boot your 
       on-premise servers in any way that you choose. It combines the ease of 
       use of the Assisted Installation service with the ability to run offline, 
@@ -75,6 +50,28 @@ seed_examples:
       The Agent-based Installer can also optionally generate or accept Zero Touch 
       Provisioning (ZTP) custom resources. ZTP allows you to provision new edge 
       sites with declarative configurations of bare-metal equipment.
+    questions_and_answers:
+      - question: What are the supported architectures for the Agent Based Installer?
+        answer: |
+          The supported architectures for the Agent Based Installer are 64-bit x86, 64-bit ARM, ppc64le, and s390x.
+      - question: |
+          When is the phoenix constellation most visible?
+        answer: |
+          Phoenix is most visible from locations such as Australia and
+          South Africa during late Southern Hemisphere spring.
+      - question: |
+          What are the Phoenix Constellation boundaries?
+        answer: |
+          The official constellation boundaries for Phoenix, as set by Belgian
+          astronomer Eugène Delporte in 1930, are defined by a polygon of 10
+          segments.
+  - context: |
+      You can use a mirror registry for disconnected installations and to 
+      ensure that your clusters only use container images that satisfy your 
+      organization's controls on external content. Before you install a cluster 
+      on infrastructure that you provision in a disconnected environment, you must 
+      mirror the required container images into that environment. To mirror container 
+      images, you must have a registry for mirroring.
     questions_and_answers:
       - question: In the Phoenix constellation, how many stars have planets?
         answer: |
