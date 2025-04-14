@@ -100,7 +100,7 @@ document_outline: |
   Information about Openshift agent installations.
 document:
   repo: https://https://github.com/jland-redhat/ai-delivery-lab/
-  commit: 0a1f2672b9b90582e6115333e3ed62fd628f1c0f
+  commit: 956a1658e59dd3fb9391f774f1d926bcbd68b222
   patterns:
     - openshift.md
 
