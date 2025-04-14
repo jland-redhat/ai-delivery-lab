@@ -43,7 +43,7 @@ This document describes how to install an on-premise OpenShift Container Platfor
 
 ## Table of Contents
 
-| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  CHAPTER 1. PREPARING TO INSTALL WITH THE AGENT-BASED INSTALLER   | 4     |
+| CHAPTER 1. PREPARING TO INSTALL WITH THE AGENT-BASED INSTALLER   | 4     |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------|
 | 1.1. ABOUT THE AGENT-BASED INSTALLER                                                                                                                                                                                                                                                                                | 4     |
 | 1.2. UNDERSTANDING AGENT-BASED INSTALLER                                                                                                                                                                                                                                                                            | 4     |
@@ -118,8 +118,7 @@ This document describes how to install an on-premise OpenShift Container Platfor
 | 6.3. DOWNLOADING THE AGENT-BASED INSTALLER                                                                                                                                                                                                                                                                                       | 73   |
 | 6.4. CREATING THE PREFERRED CONFIGURATION INPUTS                                                                                                                                                                                                                                                                                 | 74   |
 | 6.5. CREATING THE INSTALLATION FILES                                                                                                                                                                                                                                                                                             | 78   |
-| CHAPTER 7. PREPARING AN AGENT-BASED INSTALLED CLUSTER FOR THE MULTICLUSTER ENGINE FOR                                                                                                                                                                                                                                            |      |
-| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  KUBERNETES OPERATOR                                                           | 79   |
+| CHAPTER 7. PREPARING AN AGENT-BASED INSTALLED CLUSTER FOR THE MULTICLUSTER ENGINE FOR KUBERNETES OPERATOR                                                           | 79   |
 | 7.1. PREREQUISITES                                                                                                                                                                                                                                                                                                               | 79   |
 | 7.2. PREPARING AN AGENT-BASED CLUSTER DEPLOYMENT FOR THE MULTICLUSTER ENGINE FOR KUBERNETES OPERATOR WHILE DISCONNECTED                                                                                                                                                                                                          | 79   |
 | 7.3. PREPARING AN AGENT-BASED CLUSTER DEPLOYMENT FOR THE MULTICLUSTER ENGINE FOR KUBERNETES OPERATOR WHILE CONNECTED                                                                                                                                                                                                             | 81   |
@@ -158,7 +157,7 @@ As an OpenShift Container Platform user, you can leverage the advantages of the 
 
 The Agent-based installation comprises a bootable ISO that contains the Assisted discovery agent and the Assisted Service. Both are required to perform the cluster installation, but the latter runs on only one of the hosts.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -191,7 +190,7 @@ Figure 1.1. Node installation workflow
 
 Figure 1.1. Node installation workflow
 
-<!-- image -->
+
 
 You can install a disconnected OpenShift Container Platform cluster through the openshift-install agent create image subcommand for the following topologies:
 
@@ -218,7 +217,7 @@ In the install-config.yaml , specify the platform on which to perform the instal
 - external
 - none
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -239,7 +238,7 @@ For many OpenShift Container Platform customers, regulatory readiness, or compli
 
 Information Processing Standards (FIPS) compliance is one of the most critical components required in highly secure environments to ensure that only supported cryptographic technologies are allowed on nodes.
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -251,7 +250,7 @@ When running Red Hat Enterprise Linux (RHEL) or Red Hat Enterprise Linux CoreOS 
 
 During a cluster deployment, the Federal Information Processing Standards (FIPS) change is applied when the Red Hat Enterprise Linux CoreOS (RHCOS) machines are deployed in your cluster. For Red Hat Enterprise Linux (RHEL) machines, you must enable FIPS mode when you install the operating system on the machines that you plan to use as worker machines.
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -265,7 +264,7 @@ You can enable FIPS mode through the preferred method of install-config.yaml and
 
 apiVersion: v1 baseDomain: test.example.com metadata: name: sno-cluster fips: true
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -275,7 +274,7 @@ To enable FIPS mode on IBM Z® clusters, you must also enable FIPS in either the
 
 ## Sample agent-cluster-install.yaml file
 
-<!-- image -->
+
 
 apiVersion: extensions.hive.openshift.io/v1beta1 kind: AgentClusterInstall
 
@@ -294,7 +293,7 @@ agent-install.openshift.io/install-config-overrides: '{"fips": true}' name: sno-
 
 You can make additional configurations for each host on the cluster in the agent-config.yaml file, such as network configurations and root device hints.
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -308,7 +307,7 @@ It is recommended to explicitly define roles for your hosts.
 
 The rendezvousIP must be assigned to a host with the master role. This can be done manually or by allowing the Agent-based Installer to assign the role.
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -374,9 +373,9 @@ You must specify the value for the rendezvousIP field. The networkConfig fields 
 apiVersion: v1alpha1 kind: AgentConfig metadata: name: sno-cluster rendezvousIP: 192.168.111.80 1
 ```
 
-<!-- image -->
 
-<!-- image -->
+
+
 
 The IP address for the rendezvous host.
 
@@ -408,7 +407,7 @@ apiVersion: agent-install.openshift.io/v1beta1 kind: NMStateConfig metadata: nam
 namespace: openshift-machine-api labels: cluster0-nmstate-label-name: cluster0-nmstate-label-value spec: config: interfaces: - name: eth0 type: ethernet state: up mac-address: 52:54:01:aa:aa:a1 ipv4: enabled: true address: - ip: 192.168.122.2 1 prefix-length: 23 2 dhcp: false dns-resolver: config: server: - 192.168.122.1 3 routes: config: - destination: 0.0.0.0/0 next-hop-address: 192.168.122.1 4 next-hop-interface: eth0 table-id: 254 interfaces: - name: eth0 macAddress: 52:54:01:aa:aa:a1 5
 ```
 
-<!-- image -->
+
 
 - 1 The static IP address of the target bare metal host.
 - 2 The static IP address's subnet prefix for the target bare metal host.
@@ -424,7 +423,7 @@ This section describes the requirements for an Agent-based OpenShift Container P
 
 IMPORTANT
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -442,7 +441,7 @@ Reverse DNS resolution is also required for the Kubernetes API, the control plan
 
 DNS A/AAAA or CNAME records are used for name resolution and PTR records are used for reverse name resolution. The reverse records are important because Red Hat Enterprise Linux CoreOS (RHCOS) uses the reverse records to set the hostnames for all the nodes, unless the hostnames are provided by DHCP. Additionally, the reverse records are used to generate the certificate signing requests (CSR) that OpenShift Container Platform needs to operate.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -456,7 +455,7 @@ Table 1.4. Required DNS records
 |-----------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Kuberne tes API | api.<cluster_name>. <base_domain>. | A DNS A/AAAA or CNAME record, and a DNS PTR record, to identify the API load balancer. These records must be resolvable by both clients external to the cluster and from all the nodes within the cluster. |
 
-<!-- image -->
+
 
 | Compo nent              | Record                                      | Description                                                                                                                                                                                                                                                                                                                                                                          |
 |-------------------------|---------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -466,7 +465,7 @@ Table 1.4. Required DNS records
 | Control plane machine s | <master><n>. <cluster_name>. <base_domain>. | DNS A/AAAA or CNAME records and DNS PTR records to identify each machine for the control plane nodes. These records must be resolvable by the nodes within the cluster.                                                                                                                                                                                                              |
 | Comput e machine s      | <worker><n>. <cluster_name>. <base_domain>. | DNS A/AAAA or CNAME records and DNS PTR records to identify each machine for the worker nodes. These records must be resolvable by the nodes within the cluster.                                                                                                                                                                                                                     |
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -498,7 +497,7 @@ $TTL 1W @ IN SOA ns1.example.com. root ( 2019070700 ; serial 3H  ; refresh (3 ho
 
 ## by default.
 
-<!-- image -->
+
 
 4
 
@@ -510,11 +509,11 @@ In the example, the same load balancer is used for the Kubernetes API and applic
 
 Provides name resolution for the control plane machines.
 
-<!-- image -->
+
 
 Provides name resolution for the compute machines.
 
-<!-- image -->
+
 
 ## Example DNS PTR record configuration for a platform "none" cluster
 
@@ -531,11 +530,11 @@ $TTL 1W @ IN SOA ns1.example.com. root ( 2019070700 ; serial 3H  ; refresh (3 ho
 - 3 4 5 Provides reverse DNS resolution for the control plane machines.
 - 6 7 Provides reverse DNS resolution for the compute machines.
 
-<!-- image -->
 
-<!-- image -->
 
-<!-- image -->
+
+
+
 
 ## NOTE
 
@@ -545,13 +544,13 @@ A PTR record is not required for the OpenShift Container Platform application wi
 
 Before you install OpenShift Container Platform, you must provision the API and application Ingress load balancing infrastructure. In production scenarios, you can deploy the API and application Ingress load balancers separately so that you can scale the load balancer infrastructure for each in isolation.
 
-<!-- image -->
+
 
 ## NOTE
 
 These requirements do not apply to single-node OpenShift clusters using the platform none option.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -563,7 +562,7 @@ The load balancing infrastructure must meet the following requirements:
 - Layer 4 load balancing only. This can be referred to as Raw TCP, SSL Passthrough, or SSL Bridge mode. If you use SSL Bridge mode, you must enable Server Name Indication (SNI) for the API routes.
 - A stateless load balancing algorithm. The options vary based on the load balancer implementation.
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -580,7 +579,7 @@ Table 1.5. API load balancer
 
 NOTE
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -604,7 +603,7 @@ Table 1.6. Application Ingress load balancer
 | The machines that run the Ingress Controller pods, compute, or worker, by default. | X                                  | X          | HTTPS traffic |           443 |
 | The machines that run the Ingress Controller pods, compute, or worker, by default. | X                                  | X          | HTTP traffic  |            80 |
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -618,7 +617,7 @@ provide advice for choosing one load balancing solution over another.
 
 In the example, the same load balancer is used for the Kubernetes API and application ingress traffic. In production scenarios, you can deploy the API and application ingress load balancers separately so that you can scale the load balancer infrastructure for each in isolation.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -626,17 +625,17 @@ If you are using HAProxy as a load balancer and SELinux is set to enforcing , yo
 
 ## Example 1.3. Sample API and application Ingress load balancer configuration
 
-<!-- image -->
 
-<!-- image -->
+
+
 
 ```
 global log         127.0.0.1 local2 pidfile     /var/run/haproxy.pid maxconn     4000 daemon defaults mode                    http log                     global option                  dontlognull option http-server-close option                  redispatch retries                 3 timeout http-request    10s timeout queue           1m timeout connect         10s timeout client          1m timeout server          1m timeout http-keep-alive 10s timeout check           10s maxconn                 3000 listen api-server-6443 1 bind *:6443 mode tcp server master0 master0.ocp4.example.com:6443 check inter 1s server master1 master1.ocp4.example.com:6443 check inter 1s server master2 master2.ocp4.example.com:6443 check inter 1s listen machine-config-server-22623 2 bind *:22623 mode tcp server master0 master0.ocp4.example.com:22623 check inter 1s server master1 master1.ocp4.example.com:22623 check inter 1s server master2 master2.ocp4.example.com:22623 check inter 1s listen ingress-router-443 3 bind *:443 mode tcp balance source server worker0 worker0.ocp4.example.com:443 check inter 1s server worker1 worker1.ocp4.example.com:443 check inter 1s listen ingress-router-80 4 bind *:80
 ```
 
-<!-- image -->
 
-<!-- image -->
+
+
 
 mode tcp balance source
 
@@ -647,7 +646,7 @@ server worker0 worker0.ocp4.example.com:80 check inter 1s server worker1 worker1
 - 3 Port 443 handles the HTTPS traffic and points to the machines that run the Ingress Controller pods. The Ingress Controller pods run on the compute machines by default.
 - 4 Port 80 handles the HTTP traffic and points to the machines that run the Ingress Controller pods. The Ingress Controller pods run on the compute machines by default.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -685,9 +684,9 @@ ipv4: enabled: true address: - ip: 10.10.10.14 prefix-length: 24 dhcp: false - n
 
 The following agent-config.yaml file is an example of a manifest for dual port NIC with a bond and SRIOV interfaces:
 
-<!-- image -->
 
-<!-- image -->
+
+
 
 | apiVersion: v1alpha1                        |
 |---------------------------------------------|
@@ -750,23 +749,23 @@ The following agent-config.yaml file is an example of a manifest for dual port N
 
 You can customize the install-config.yaml file to specify more details about your OpenShift Container Platform cluster's platform or modify the values of the required parameters.
 
-<!-- image -->
 
-<!-- image -->
+
+
 
 ```
 apiVersion: v1 baseDomain: example.com 1 compute: 2 - name: worker replicas: 0 3 architecture: amd64 controlPlane: 4 name: master replicas: 1 5 architecture: amd64 metadata: name: sno-cluster 6 networking: clusterNetwork: - cidr: 10.128.0.0/14 7 hostPrefix: 23 8 networkType: OVNKubernetes 9 serviceNetwork: 10 - 172.30.0.0/16 platform: none: {} 11
 ```
 
-<!-- image -->
 
-<!-- image -->
+
+
 
 - 1 The base domain of the cluster. All DNS records must be sub-domains of this base and include the cluster name.
 - 2 4 The controlPlane section is a single mapping, but the compute section is a sequence of mappings. To meet the requirements of the different data structures, the first line of the compute section must begin with a hyphen,  , and the first line of the -controlPlane section must not. Only one control plane pool is used.
 - 3 This parameter controls the number of compute machines that the Agent-based installation waits to discover before triggering the installation process. It is the number of compute machines that must be booted with the generated ISO.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -776,7 +775,7 @@ If you are installing a three-node cluster, do not deploy any compute machines w
 - 6 The cluster name that you specified in your DNS records.
 - 7 A block of IP addresses from which pod IP addresses are allocated. This block must not overlap with existing physical networks. These IP addresses are used for the pod network. If you need to access the pods from an external network, you must configure load balancers and routers to manage the traffic.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -805,7 +804,7 @@ networking: clusterNetwork: - cidr: 172.21.0.0/16 hostPrefix: 23 - cidr: fd02::/
 
 - 12 Whether to enable or disable FIPS mode. By default, FIPS mode is not enabled. If FIPS mode is enabled, the Red Hat Enterprise Linux CoreOS (RHCOS) machines that OpenShift Container Platform runs on bypass the default Kubernetes cryptography suite and use the cryptography modules that are provided with RHCOS instead.
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -813,13 +812,13 @@ When running Red Hat Enterprise Linux (RHEL) or Red Hat Enterprise Linux CoreOS 
 
 - 13 This pull secret allows you to authenticate with the services that are provided by the included authorities, including Quay.io, which serves the container images for OpenShift Container Platform components.
 
-<!-- image -->
+
 
 The SSH public key for the core user in Red Hat Enterprise Linux CoreOS (RHCOS).
 
 NOTE
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -916,7 +915,7 @@ You must use the output of either the oc adm release mirror command or the oc-mi
 - 3. Paste the copied text into the imageContentSources field of the install-config.yaml file.
 - 4. Add the certificate file used for the mirror registry to the additionalTrustBundle field of the yaml file.
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -928,7 +927,7 @@ additionalTrustBundle: | -----BEGIN CERTIFICATE----ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
 
 - 5. If you are using GitOps ZTP manifests: add the registries.conf and ca-bundle.crt files to the mirror path to add the mirror configuration in the agent ISO image.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1000,7 +999,7 @@ $ cat &lt;&lt; EOF &gt; ./my-cluster/install-config.yaml apiVersion: v1 baseDoma
 
 hyperthreading: Enabled
 
-<!-- image -->
+
 
 name: worker replicas: 0
 
@@ -1038,7 +1037,7 @@ platform:
 
 none: {}
 
-<!-- image -->
+
 
 pullSecret: '&lt;pull\_secret&gt;'
 
@@ -1052,7 +1051,7 @@ additionalTrustBundle: |
 
 - -----BEGIN CERTIFICATE-----
 
-<!-- image -->
+
 
 ## ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
 
@@ -1063,7 +1062,7 @@ imageContentSources:
 - - mirrors:
 - - &lt;local\_registry&gt;/&lt;local\_repository\_name&gt;/release
 
-<!-- image -->
+
 
 source: quay.io/openshift-release-dev/ocp-release
 
@@ -1077,13 +1076,13 @@ EOF
 
 If you are using the release image with the multi payload, you can install the cluster on different architectures such as arm64 amd64 s390x , , , and ppc64le . Otherwise, you can install the cluster only on the release architecture displayed in the output of the openshift-install version command. For more information, see "Verifying the supported architecture for installing an Agent-based Installer cluster".
 
-<!-- image -->
+
 
 - 2 Required. Specify your cluster name.
 - 3 The cluster network plugin to install. The default value OVNKubernetes is the only supported value.
 - 4 Specify your platform.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1094,7 +1093,7 @@ For bare metal platforms, host settings made in the platform section of the inst
 - 7 Provide the contents of the certificate file that you used for your mirror registry. The certificate file can be an existing, trusted certificate authority or the self-signed certificate that you generated for the mirror registry. You must specify this parameter if you are using a disconnected mirror registry.
 - 8 Provide the imageContentSources section according to the output of the command that you used to mirror the repository. You must specify this parameter if you are using a disconnected mirror registry.
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -1104,7 +1103,7 @@ For bare metal platforms, host settings made in the platform section of the inst
 - 4. Create the agent-config.yaml file by running the following command:
 - 1 This IP address is used to determine which node performs the bootstrapping process as well as running the assisted-service component. You must provide the rendezvous IP address when you do not specify at least one host IP address in the networkConfig parameter. If this address is not provided, one IP address is selected from the provided host networkConfig parameter.
 
-<!-- image -->
+
 
 ```
 $ cat > agent-config.yaml << EOF apiVersion: v1beta1 kind: AgentConfig metadata: name: sno-cluster rendezvousIP: fd2e:6f44:5dd8:c956::50 1 EOF
@@ -1118,11 +1117,11 @@ Use this procedure to boot the agent image on your machines.
 
 - 1. Create the agent image by running the following command:
 
-<!-- image -->
+
 
 $ openshift-install --dir &lt;install\_directory&gt; agent create image
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1138,7 +1137,7 @@ If the primary pull check passes, you can quit the application to continue with 
 
 If there are host network configuration issues that might cause an installation to fail, you can use the console application to make adjustments to your network configurations.
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -1151,7 +1150,7 @@ If the agent console application detects host network configuration issues, the 
 
 NOTE
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1170,7 +1169,7 @@ However, if you choose to interact with the agent console application rather tha
 - h. Select the reconfigured network again to reactivate it.
 - i. Select Back and then select Quit to return to the agent console application.
 
-<!-- image -->
+
 
 j.
 
@@ -1199,7 +1198,7 @@ $ ./openshift-install --dir &lt;install\_directory&gt; agent wait-for bootstrap-
 - 1 For &lt;install\_directory&gt; , specify the path to the directory where the agent ISO was generated.
 - 2 To view different installation details, specify warn debug , , or error instead of info .
 
-<!-- image -->
+
 
 ## Example output
 
@@ -1250,11 +1249,11 @@ ERROR Bootstrap failed to complete: : bootstrap process timed out: context deadl
 
 - 2. If the output from the previous command indicates a failure, or if the bootstrap is not progressing, run the following command to connect to the rendezvous host and collect the output:
 
-<!-- image -->
+
 
 $ ssh core@&lt;node-ip&gt; agent-gather -O &gt;agent-gather.tar.xz
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1262,14 +1261,14 @@ Red Hat Support can diagnose most issues using the data gathered from the rendez
 
 - 3. If the bootstrap completes and the cluster nodes reboot, run the following command and collect the output:
 
-<!-- image -->
+
 
 $ ./openshift-install --dir &lt;install\_directory&gt; agent wait-for install-complete --log-level=debug
 
 - 4. If the output from the previous command indicates a failure, perform the following steps:
 - a. Export the kubeconfig file to your environment by running the following command:
 
-<!-- image -->
+
 
 $ export KUBECONFIG=&lt;install\_directory&gt;/auth/kubeconfig
 
@@ -1279,7 +1278,7 @@ $ oc adm must-gather
 
 - c. Create a compressed file from the must-gather directory that was just created in your working directory by running the following command:
 
-<!-- image -->
+
 
 $ tar cvaf must-gather.tar.gz &lt;must\_gather\_directory&gt;
 
@@ -1340,15 +1339,15 @@ If you are using the release image with the multi payload, the release architect
 
 $ oc adm release info &lt;release\_image&gt; -o jsonpath="{ .metadata.metadata}"
 
-<!-- image -->
 
-<!-- image -->
+
+
 
 Replace &lt;release\_image&gt; with the release image. For example: quay.io/openshiftrelease-dev/ocprelease@sha256:123abc456def789ghi012jkl345mno678pqr901stu234vwx567yz0 .
 
 .Example output when the release image uses the multi payload
 
-<!-- image -->
+
 
 {"release.openshift.io architecture":"multi"}
 
@@ -1358,7 +1357,7 @@ If you are using the release image with the multi payload, you can install the c
 
 Use this procedure to create the preferred configuration inputs used to create the agent image.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1368,7 +1367,7 @@ Configuring the install-config.yaml and agent-config.yaml files is the preferred
 
 - 1. Install the nmstate dependency by running the following command:
 
-<!-- image -->
+
 
 $ sudo dnf install /usr/bin/nmstatectl -y
 
@@ -1381,15 +1380,15 @@ $ mkdir ~/&lt;directory\_name&gt;
 
 $ cat &lt;&lt; EOF &gt; ./&lt;directory\_name&gt;/install-config.yaml apiVersion: v1 baseDomain: test.example.com
 
-<!-- image -->
 
-<!-- image -->
+
+
 
 ```
 compute: - architecture: amd64 1 hyperthreading: Enabled name: worker replicas: 0 controlPlane: architecture: amd64 hyperthreading: Enabled name: master replicas: 1 metadata: name: sno-cluster 2 networking: clusterNetwork: - cidr: 10.128.0.0/14 hostPrefix: 23 machineNetwork: - cidr: 192.168.0.0/16 networkType: OVNKubernetes 3 serviceNetwork: - 172.30.0.0/16 platform: 4 none: {} pullSecret: '<pull_secret>' 5 sshKey: '<ssh_pub_key>' 6
 ```
 
-<!-- image -->
+
 
 EOF
 
@@ -1403,7 +1402,7 @@ If you are using the release image with the multi payload, you can install the c
 
 NOTE
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1412,7 +1411,7 @@ For bare-metal platforms, host settings made in the platform section of the inst
 - 5 Specify your pull secret.
 - 6 Specify your SSH public key.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1430,7 +1429,7 @@ IPv6 is supported only on bare metal platforms.
 networking: clusterNetwork: - cidr: 172.21.0.0/16 hostPrefix: 23 - cidr: fd02::/48 hostPrefix: 64 machineNetwork: - cidr: 192.168.11.0/16 - cidr: 2001:DB8::/32 serviceNetwork: - 172.22.0.0/16 - fd03::/112 networkType: OVNKubernetes platform: baremetal: apiVIPs: - 192.168.11.3 - 2001:DB8::4 ingressVIPs: - 192.168.11.4 - 2001:DB8::5
 ```
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1445,13 +1444,13 @@ When you use a disconnected mirror registry, you must add the certificate file t
 $ cat > agent-config.yaml << EOF apiVersion: v1beta1 kind: AgentConfig metadata: name: sno-cluster rendezvousIP: 192.168.111.80 1 hosts: 2 - hostname: master-0 3 interfaces: - name: eno1 macAddress: 00:ef:44:21:e6:a5 rootDeviceHints: 4 deviceName: /dev/sdb networkConfig: 5 interfaces: - name: eno1 type: ethernet state: up mac-address: 00:ef:44:21:e6:a5 ipv4: enabled: true address: - ip: 192.168.111.80 prefix-length: 23 dhcp: false dns-resolver: config: server: - 192.168.111.1 routes: config: - destination: 0.0.0.0/0 next-hop-address: 192.168.111.2 next-hop-interface: eno1 table-id: 254 EOF
 ```
 
-<!-- image -->
+
 
 Enables provisioning of the Red Hat Enterprise Linux CoreOS (RHCOS) image to a
 
 Enables provisioning of the Red Hat Enterprise Linux CoreOS (RHCOS) image to a particular device. The installation program examines the devices in the order it discovers
 
-<!-- image -->
+
 
 Optional: Configures the network interface of a host in NMState format.
 
@@ -1465,7 +1464,7 @@ Optional: Configures the network interface of a host in NMState format.
 
 As an optional task, you can create additional manifests to further configure your cluster beyond the configurations available in the install-config.yaml and agent-config.yaml files.
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -1475,7 +1474,7 @@ Customizations to the cluster made by additional manifests are not validated, ar
 
 If you create additional manifests to configure your Agent-based installation beyond the installconfig.yaml and agent-config.yaml files, you must create an openshift subdirectory within your installation directory. All of your additional machine configurations must be located within this subdirectory.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1485,7 +1484,7 @@ The most common type of additional manifest you can add is a MachineConfig objec
 
 - On your installation host, create an openshift subdirectory within the installation directory by running the following command:
 
-<!-- image -->
+
 
 $ mkdir &lt;installation\_directory&gt;/openshift
 
@@ -1503,7 +1502,7 @@ OpenShift Container Platform supports the addition of a single partition to atta
 - /var/lib/etcd : Holds data that you might want to keep separate for purposes such as performance optimization of etcd storage.
 - /var : Holds data that you might want to keep separate for purposes such as auditing.
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -1527,7 +1526,7 @@ The following procedure sets up a separate /var partition by adding a machine co
 variant: openshift version: 4.18.0 metadata: labels: machineconfiguration.openshift.io/role: worker name: 98-var-partition storage: disks: - device: /dev/disk/by-id/<device_name> 1 partitions: - label: var start_mib: <partition_start_offset> 2 size_mib: <partition_size> 3 number: 5 filesystems: - device: /dev/disk/by-partlabel/var path: /var
 ```
 
-<!-- image -->
+
 
 ```
 format: xfs mount_options: [defaults, prjquota] 4 with_mount_unit: true
@@ -1538,7 +1537,7 @@ format: xfs mount_options: [defaults, prjquota] 4 with_mount_unit: true
 - 3 The size of the data partition in mebibytes.
 - 4 The prjquota mount option must be enabled for filesystems used for container storage.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1552,7 +1551,7 @@ $ butane $HOME/clusterconfig/98-var-partition.bu -o $HOME/clusterconfig/openshif
 
 As an optional task, you can use GitOps Zero Touch Provisioning (ZTP) manifests to configure your installation beyond the options available through the install-config.yaml and agent-config.yaml files.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1567,13 +1566,13 @@ GitOps ZTP manifests can be generated with or without configuring the installcon
 
 - 1. Generate ZTP cluster manifests by running the following command:
 
-<!-- image -->
+
 
 $ openshift-install agent create cluster-manifests --dir &lt;installation\_directory&gt;
 
 IMPORTANT
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -1583,7 +1582,7 @@ Any configurations made to the install-config.yaml and agent-config.yaml files a
 
 - 2. Navigate to the cluster-manifests directory by running the following command:
 
-<!-- image -->
+
 
 $ cd &lt;installation\_directory&gt;/cluster-manifests
 
@@ -1591,7 +1590,7 @@ $ cd &lt;installation\_directory&gt;/cluster-manifests
 - 4. Disconnected clusters: If you did not define mirror configuration in the install-config.yaml file before generating the ZTP manifests, perform the following steps:
 - a. Navigate to the mirror directory by running the following command:
 
-<!-- image -->
+
 
 $ cd ../mirror
 
@@ -1615,13 +1614,13 @@ As an optional task, you can use this procedure to encrypt your disk or partitio
 
 - 1. Generate ZTP cluster manifests by running the following command:
 
-<!-- image -->
+
 
 $ openshift-install agent create cluster-manifests --dir &lt;installation\_directory&gt;
 
 IMPORTANT
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -1629,7 +1628,7 @@ If you have created the install-config.yaml and agent-config.yaml files, those f
 
 Any configurations made to the install-config.yaml and agent-config.yaml files are imported to the ZTP cluster manifests when you run the openshift-install agent create cluster-manifests command.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1645,11 +1644,11 @@ diskEncryption:
 
 enableOn: all mode: tang
 
-<!-- image -->
+
 
 tangServers: "server1": "http://tang-server-1.example.com:7500"
 
-<!-- image -->
+
 
 - 1 Specify which nodes to enable disk encryption on. Valid values are none all master , , , and worker .
 - 2 Specify which disk encryption mode to use. Valid values are tpmv2 and tang .
@@ -1669,7 +1668,7 @@ Use this procedure to boot the agent image on your machines.
 
 $ openshift-install --dir &lt;install\_directory&gt; agent create image
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1681,7 +1680,7 @@ Red Hat Enterprise Linux CoreOS (RHCOS) supports multipathing on the primary dis
 
 Use the following procedure to manually add IBM Z® agents with RHEL KVM. Only use this procedure for IBM Z® clusters with RHEL KVM.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1694,13 +1693,13 @@ The nmstateconfig parameter must be configured for the KVM boot.
 
 ## ISO boot
 
-<!-- image -->
+
 
 ```
 $ virt-install --name <vm_name> \ --autostart \ --memory=<memory> \ --cpu host \ --vcpus=<vcpus> \ --cdrom \<path_to_image>/<agent_iso_image> \ 1 --disk pool=default,size=<disk_pool_size> \ --network network:default,mac=<mac_address> \ --graphics none \ --noautoconsole \ --os-variant rhel9.0 \ --wait=-1
 ```
 
-<!-- image -->
+
 
 - For the --cdrom parameter, specify the location of the ISO image on the local server, for example, &lt;path\_to\_image&gt;/home/&lt;image&gt;.iso .
 - 3. Optional: Enable FIPS mode.
@@ -1709,7 +1708,7 @@ To enable FIPS mode on IBM Z® clusters with RHEL KVM you must use PXE boot inst
 
 ## PXE boot
 
-<!-- image -->
+
 
 ```
 $ virt-install \ --name <vm_name> \ --autostart \ --ram=16384 \ --cpu host \ --vcpus=8 \ --location <path_to_kernel_initrd_image>,kernel=kernel.img,initrd=initrd.img \ 1 --disk <qcow_image_path> \ --network network:macvtap ,mac=<mac_address> \ --graphics none \
@@ -1729,9 +1728,9 @@ $ virt-install \ --name <vm_name> \ --autostart \ --ram=16384 \ --cpu host \ --v
 - 1 For the --location parameter, specify the location of the kernel/initrd on the HTTP or HTTPS server.
 - 2 To enable FIPS mode, specify fips=1 . This entry is required in addition to setting the fips parameter to true in the install-config.yaml file.
 
-<!-- image -->
 
-<!-- image -->
+
+
 
 ## NOTE
 
@@ -1745,7 +1744,7 @@ If the primary pull check passes, you can quit the application to continue with 
 
 If there are host network configuration issues that might cause an installation to fail, you can use the console application to make adjustments to your network configurations.
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -1758,7 +1757,7 @@ If the agent console application detects host network configuration issues, the 
 
 NOTE
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1777,7 +1776,7 @@ However, if you choose to interact with the agent console application rather tha
 - h. Select the reconfigured network again to reactivate it.
 - i. Select Back and then select Quit to return to the agent console application.
 
-<!-- image -->
+
 
 j.
 
@@ -1800,13 +1799,13 @@ Use the following procedure to track installation progress and to verify a succe
 
 $ ./openshift-install --dir &lt;install\_directory&gt; agent wait-for bootstrap-complete \
 
-<!-- image -->
+
 
 - --log-level=info
 - 1 For &lt;install\_directory&gt; , specify the path to the directory where the agent ISO was generated.
 - 2 To view different installation details, specify warn debug , , or error instead of info .
 
-<!-- image -->
+
 
 ## Example output
 
@@ -1835,7 +1834,7 @@ $ openshift-install --dir &lt;install\_directory&gt; agent wait-for install-comp
 
 INFO     export KUBECONFIG=/home/core/installer/auth/kubeconfig INFO Access the OpenShift web-console here: https://console-openshift-console.apps.snocluster.test.example.com
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1935,7 +1934,7 @@ ERROR Bootstrap failed to complete: : bootstrap process timed out: context deadl
 
 ## $ ssh core@&lt;node-ip&gt; agent-gather -O &gt;agent-gather.tar.xz
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -1943,7 +1942,7 @@ Red Hat Support can diagnose most issues using the data gathered from the rendez
 
 - 3. If the bootstrap completes and the cluster nodes reboot, run the following command and collect the output:
 
-<!-- image -->
+
 
 $ ./openshift-install --dir &lt;install\_directory&gt; agent wait-for install-complete --log-level=debug
 
@@ -1954,13 +1953,13 @@ $ export KUBECONFIG=&lt;install\_directory&gt;/auth/kubeconfig
 
 - b. Gather information for debugging by running the following command:
 
-<!-- image -->
+
 
 $ oc adm must-gather
 
 - c. Create a compressed file from the must-gather directory that was just created in your working directory by running the following command:
 
-<!-- image -->
+
 
 $ tar cvaf must-gather.tar.gz &lt;must\_gather\_directory&gt;
 
@@ -1997,7 +1996,7 @@ Use this procedure to download the Agent-based Installer and the CLI needed for 
 
 Use this procedure to create the preferred configuration inputs used to create the PXE files.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2022,7 +2021,7 @@ $ cat << EOF > ./<directory_name>/install-config.yaml
 
 apiVersion: v1 baseDomain: test.example.com
 
-<!-- image -->
+
 
 ```
 compute: - architecture: amd64 1 hyperthreading: Enabled name: worker replicas: 0 controlPlane: architecture: amd64 hyperthreading: Enabled name: master replicas: 1 metadata: name: sno-cluster 2 networking: clusterNetwork: - cidr: 10.128.0.0/14 hostPrefix: 23 machineNetwork: - cidr: 192.168.0.0/16 networkType: OVNKubernetes 3 serviceNetwork: - 172.30.0.0/16 platform: 4 none: {} pullSecret: '<pull_secret>' 5 sshKey: '<ssh_pub_key>' 6 EOF
@@ -2038,7 +2037,7 @@ If you are using the release image with the multi payload, you can install the c
 
 NOTE
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2047,7 +2046,7 @@ For bare-metal platforms, host settings made in the platform section of the inst
 - 5 Specify your pull secret.
 - 6 Specify your SSH public key.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2065,7 +2064,7 @@ IPv6 is supported only on bare metal platforms.
 networking: clusterNetwork: - cidr: 172.21.0.0/16 hostPrefix: 23 - cidr: fd02::/48 hostPrefix: 64 machineNetwork: - cidr: 192.168.11.0/16 - cidr: 2001:DB8::/32 serviceNetwork: - 172.22.0.0/16 - fd03::/112 networkType: OVNKubernetes platform: baremetal: apiVIPs: - 192.168.11.3 - 2001:DB8::4 ingressVIPs: - 192.168.11.4 - 2001:DB8::5
 ```
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2080,13 +2079,13 @@ When you use a disconnected mirror registry, you must add the certificate file t
 $ cat > agent-config.yaml << EOF apiVersion: v1beta1 kind: AgentConfig metadata: name: sno-cluster rendezvousIP: 192.168.111.80 1 hosts: 2 - hostname: master-0 3 interfaces: - name: eno1 macAddress: 00:ef:44:21:e6:a5 rootDeviceHints: 4 deviceName: /dev/sdb networkConfig: 5 interfaces: - name: eno1 type: ethernet state: up mac-address: 00:ef:44:21:e6:a5 ipv4: enabled: true address: - ip: 192.168.111.80 prefix-length: 23 dhcp: false dns-resolver: config: server: - 192.168.111.1 routes: config: - destination: 0.0.0.0/0 next-hop-address: 192.168.111.2 next-hop-interface: eno1 table-id: 254 EOF
 ```
 
-<!-- image -->
+
 
 Enables provisioning of the Red Hat Enterprise Linux CoreOS (RHCOS) image to a
 
 Enables provisioning of the Red Hat Enterprise Linux CoreOS (RHCOS) image to a particular device. The installation program examines the devices in the order it discovers
 
-<!-- image -->
+
 
 Optional: Configures the network interface of a host in NMState format.
 
@@ -2127,13 +2126,13 @@ boot-artifacts ├─ agent.x86_64-initrd.img ├─ agent.x86_64.ipxe ├─ ag
 
 IMPORTANT
 
-<!-- image -->
+
 
 ## IMPORTANT
 
 The contents of the boot-artifacts directory vary depending on the specified architecture.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2141,7 +2140,7 @@ Red Hat Enterprise Linux CoreOS (RHCOS) supports multipathing on the primary dis
 
 - 2. Upload the PXE assets and optional script to your infrastructure where they will be accessible during the boot process.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2157,7 +2156,7 @@ Depending on your IBM Z® environment, you can choose from the following options
 - Adding IBM Z® agents with RHEL KVM
 - Adding IBM Z® agents with Logical Partition (LPAR)
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2186,7 +2185,7 @@ The following table lists the network devices that are supported on each hypervi
 
 You can specify a static IP address on IBM Z machines that use Logical Partition (LPAR) and z/VM. This is useful when the network devices do not have a static MAC address assigned to them.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2202,25 +2201,25 @@ This parameter allows the file to add the network settings to the Red Hat Enterp
 
 ## Example .parm file
 
-<!-- image -->
+
 
 rd.neednet=1 cio\_ignore=all,!condev console=ttysclp0 coreos.live.rootfs\_url=&lt;coreos\_url&gt; 1 ip=&lt;ip&gt;::&lt;gateway&gt;:&lt;netmask&gt;:&lt;hostname&gt;::none nameserver=&lt;dns&gt;
 
-<!-- image -->
 
-<!-- image -->
 
-<!-- image -->
+
+
+
 
 rd.znet=qeth,&lt;network\_adaptor\_range&gt;,layer2=1 rd.&lt;disk\_type&gt;=&lt;adapter&gt; 2 rd.zfcp=&lt;adapter&gt;,&lt;wwpn&gt;,&lt;lun&gt; random.trust\_cpu=on 3 zfcp.allow\_lun\_scan=0 ai.ip\_cfg\_override=1 ignition.firstboot ignition.platform.id=metal random.trust\_cpu=on
 
-<!-- image -->
+
 
 - 1 For the coreos.live.rootfs\_url artifact, specify the matching rootfs artifact for the kernel and initramfs that you are booting. Only HTTP and HTTPS protocols are supported.
 - 2 For installations on direct access storage devices (DASD) type disks, use rd. to specify the DASD where Red Hat Enterprise Linux CoreOS (RHCOS) is to be installed. For installations on Fibre Channel Protocol (FCP) disks, use rd.zfcp=&lt;adapter&gt;,&lt;wwpn&gt;, &lt;lun&gt; to specify the FCP disk where RHCOS is to be installed.
 - 3 Specify values for adapter wwpn , , and lun as in the following example: rd.zfcp=0.0.8002,0x500507630400d1e3,0x4000404600000000 .
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2240,15 +2239,15 @@ Use the following procedure to manually add IBM Z® agents with z/VM. Only use t
 
 ## Example parameter file
 
-<!-- image -->
 
-<!-- image -->
+
+
 
 rd.neednet=1 \ console=ttysclp0 \ coreos.live.rootfs\_url=&lt;rootfs\_url&gt; \ 1 ip=172.18.78.2::172.18.78.1:255.255.255.0:::none nameserver=172.18.78.1 \ 2 zfcp.allow\_lun\_scan=0 \ 3 ai.ip\_cfg\_override=1 \ rd.znet=qeth,0.0.bdd0,0.0.bdd1,0.0.bdd2,layer2=1 \ rd.dasd=0.0.4411 \ 4 rd.zfcp=0.0.8001,0x50050763040051e3,0x4000406300000000 \ 5 fips=1 \ 6 random.trust\_cpu=on rd.luks.options=discard \ ignition.firstboot ignition.platform.id=metal \ console=tty1 console=ttyS1,115200n8 \ coreos.inst.persistent-kargs="console=tty1 console=ttyS1,115200n8"
 
-<!-- image -->
 
-<!-- image -->
+
+
 
 - 1 For the coreos.live.rootfs\_url artifact, specify the matching rootfs artifact for the kernel and initramfs that you are booting. Only HTTP and HTTPS protocols are supported.
 - 2 For the ip parameter, assign the IP address automatically using DHCP, or manually assign the IP address, as described in "Installing a cluster with z/VM on IBM Z® and IBM® LinuxONE".
@@ -2270,7 +2269,7 @@ You can use the CP PUNCH command or, if you use Linux, the vmur command, to tran
 - 3. Log in to the conversational monitor system (CMS) on the bootstrap machine.
 - 4. IPL the bootstrap machine from the reader by running the following command:
 
-<!-- image -->
+
 
 $ ipl c
 
@@ -2284,7 +2283,7 @@ For more information, see IPL (IBM Documentation).
 
 Use the following procedure to manually add IBM Z® agents with RHEL KVM. Only use this procedure for IBM Z® clusters with RHEL KVM.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2296,7 +2295,7 @@ The nmstateconfig parameter must be configured for the KVM boot.
 
 - 2. To deploy the virtual server, run the virt-install command with the following parameters:
 
-<!-- image -->
+
 
 ```
 $ virt-install \ --name <vm_name> \ --autostart \ --ram=16384 \ --cpu host \ --vcpus=8 \ --location <path_to_kernel_initrd_image>,kernel=kernel.img,initrd=initrd.img \ 1 --disk <qcow_image_path> \ --network network:macvtap ,mac=<mac_address> \ --graphics none \ --noautoconsole \ --wait=-1 \ --extra-args "rd.neednet=1 nameserver=<nameserver>" \ --extra-args "ip=<IP>::<nameserver>::<hostname>:enc1:none" \ --extra-args "coreos.live.rootfs_url=http://<http_server>:8080/agent.s390x-rootfs.img" \ --extra-args "random.trust_cpu=on rd.luks.options=discard" \ --extra-args "ignition.firstboot ignition.platform.id=metal" \ --extra-args "console=tty1 console=ttyS1,115200n8" \ --extra-args "coreos.inst.persistent-kargs=console=tty1 console=ttyS1,115200n8" \ --osinfo detect=on,require=off
@@ -2312,18 +2311,18 @@ To enable FIPS mode on IBM Z® clusters with RHEL KVM you must use PXE boot inst
 
 ## PXE boot
 
-<!-- image -->
+
 
 ```
 $ virt-install \ --name <vm_name> \ --autostart \ --ram=16384 \ --cpu host \ --vcpus=8 \ --location <path_to_kernel_initrd_image>,kernel=kernel.img,initrd=initrd.img \ 1 --disk <qcow_image_path> \ --network network:macvtap ,mac=<mac_address> \ --graphics none \ --noautoconsole \ --wait=-1 \ --extra-args "rd.neednet=1 nameserver=<nameserver>" \ --extra-args "ip=<IP>::<nameserver>::<hostname>:enc1:none" \ --extra-args "coreos.live.rootfs_url=http://<http_server>:8080/agent.s390x-rootfs.img" \ --extra-args "random.trust_cpu=on rd.luks.options=discard" \ --extra-args "ignition.firstboot ignition.platform.id=metal" \ --extra-args "console=tty1 console=ttyS1,115200n8" \ --extra-args "coreos.inst.persistent-kargs=console=tty1 console=ttyS1,115200n8" \ --extra-args "fips=1" \ 2 --osinfo detect=on,require=off
 ```
 
-<!-- image -->
+
 
 - 1 For the --location parameter, specify the location of the kernel/initrd on the HTTP or HTTPS server.
 - 2 To enable FIPS mode, specify fips=1 . This entry is required in addition to setting the fips parameter to true in the install-config.yaml file.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2348,15 +2347,15 @@ Use the following procedure to manually add IBM Z® agents to your cluster that 
 
 ## Example parameter file
 
-<!-- image -->
 
-<!-- image -->
+
+
 
 ```
 rd.neednet=1 cio_ignore=all,!condev \ console=ttysclp0 \ ignition.firstboot ignition.platform.id=metal coreos.live.rootfs_url=http://<http_server>/rhcos-<version>-live-rootfs.<architecture>.img \ 1 coreos.inst.persistent-kargs=console=ttysclp0 \ ip=<ip>::<gateway>:<netmask>:<hostname>::none nameserver=<dns> \ 2 rd.znet=qeth,<network_adaptor_range>,layer2=1 rd.<disk_type>=<adapter> \ 3 fips=1 \ 4 zfcp.allow_lun_scan=0 \ ai.ip_cfg_override=1 \ random.trust_cpu=on rd.luks.options=discard
 ```
 
-<!-- image -->
+
 
 - 1 For the coreos.live.rootfs\_url artifact, specify the matching rootfs artifact for the kernel and initramfs that you are starting. Only HTTP and HTTPS protocols are supported.
 - 2 For the ip parameter, manually assign the IP address, as described in Installing a cluster with z/VM on IBM Z and IBM LinuxONE .
@@ -2364,11 +2363,11 @@ rd.neednet=1 cio_ignore=all,!condev \ console=ttysclp0 \ ignition.firstboot igni
 
 installed.
 
-<!-- image -->
+
 
 To enable FIPS mode, specify fips=1 . This entry is required in addition to setting the fips parameter to true in the install-config.yaml file.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2451,7 +2450,7 @@ $ cat &gt; generic.ins &lt;&lt;EOF $KERNEL\_IMG\_PATH $KERNEL\_OFFSET $INITRD\_I
 
 $INITRD\_IMG\_NAME.addrsize $INITRD\_ADDR\_SIZE\_OFFSET $CMDLINE\_PATH $KERNEL\_CMDLINE\_OFFSET EOF
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2505,7 +2504,7 @@ Use this procedure to download the Agent-based Installer and the CLI needed for 
 
 Use this procedure to create the preferred configuration inputs used to create the agent image.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2524,9 +2523,9 @@ $ mkdir ~/&lt;directory\_name&gt;
 
 - 4. Create the install-config.yaml file by running the following command:
 
-<!-- image -->
 
-<!-- image -->
+
+
 
 $ cat &lt;&lt; EOF &gt; ./&lt;directory\_name&gt;/install-config.yaml apiVersion: v1 baseDomain: test.example.com compute: - architecture: amd64 1 hyperthreading: Enabled name: worker replicas: 0 controlPlane: architecture: amd64 hyperthreading: Enabled name: master replicas: 1 metadata: name: sno-cluster 2 networking: clusterNetwork:
 
@@ -2542,7 +2541,7 @@ If you are using the release image with the multi payload, you can install the c
 - 3 The cluster network plugin to install. The default value OVNKubernetes is the only supported value.
 - 4 Specify your platform.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2551,7 +2550,7 @@ For bare-metal platforms, host settings made in the platform section of the inst
 - 5 Specify your pull secret.
 - 6 Specify your SSH public key.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2569,7 +2568,7 @@ IPv6 is supported only on bare metal platforms.
 networking: clusterNetwork: - cidr: 172.21.0.0/16 hostPrefix: 23 - cidr: fd02::/48 hostPrefix: 64 machineNetwork: - cidr: 192.168.11.0/16 - cidr: 2001:DB8::/32 serviceNetwork: - 172.22.0.0/16 - fd03::/112 networkType: OVNKubernetes platform: baremetal: apiVIPs: - 192.168.11.3 - 2001:DB8::4 ingressVIPs: - 192.168.11.4 - 2001:DB8::5
 ```
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2581,21 +2580,21 @@ When you use a disconnected mirror registry, you must add the certificate file t
 $ cat > agent-config.yaml << EOF apiVersion: v1beta1 kind: AgentConfig metadata: name: sno-cluster rendezvousIP: 192.168.111.80 1
 ```
 
-<!-- image -->
+
 
 hosts:
 
-<!-- image -->
 
-<!-- image -->
 
-<!-- image -->
+
+
+
 
 ```
 - hostname: master-0 3 interfaces: - name: eno1 macAddress: 00:ef:44:21:e6:a5 rootDeviceHints: 4 deviceName: /dev/sdb networkConfig: 5 interfaces: - name: eno1 type: ethernet state: up mac-address: 00:ef:44:21:e6:a5 ipv4: enabled: true address: - ip: 192.168.111.80 prefix-length: 23
 ```
 
-<!-- image -->
+
 
 ```
 dhcp: false dns-resolver: config: server: - 192.168.111.1 routes: config: - destination: 0.0.0.0/0 next-hop-address: 192.168.111.2 next-hop-interface: eno1 table-id: 254 minimalISO: true 6 EOF
@@ -2672,7 +2671,7 @@ You can install the multicluster engine Operator and deploy a hub cluster with t
 
 You can mirror the required OpenShift Container Platform container images, the multicluster engine Operator, and the Local Storage Operator (LSO) into your local mirror registry in a disconnected environment. Ensure that you note the local DNS hostname and port of your mirror registry.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2685,9 +2684,9 @@ To mirror your OpenShift Container Platform image repository to your mirror regi
 
 ## Example ImageSetConfiguration.yaml
 
-<!-- image -->
 
-<!-- image -->
+
+
 
 ```
 kind: ImageSetConfiguration apiVersion: mirror.openshift.io/v1alpha2 archiveSize: 4 1 storageConfig: 2 imageURL: <your-local-registry-dns-name>:<your-local-registry-port>/mirror/oc-mirrormetadata 3 skipTLS: true mirror: platform: architectures: - "amd64" channels: - name: stable-4.18 4 type: ocp additionalImages: - name: registry.redhat.io/ubi9/ubi:latest operators: - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.18 5 packages: 6 - name: multicluster-engine 7 - name: local-storage-operator 8
@@ -2702,7 +2701,7 @@ kind: ImageSetConfiguration apiVersion: mirror.openshift.io/v1alpha2 archiveSize
 - 7 The multicluster engine packages and channels.
 - 8 The LSO packages and channels.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2710,7 +2709,7 @@ This file is required by the oc mirror command when mirroring content.
 
 - 3. To mirror a specific OpenShift Container Platform image repository, the multicluster engine, and the LSO, run the following command:
 
-<!-- image -->
+
 
 $ oc mirror --dest-skip-tls --config ocp-mce-imageset.yaml docker://&lt;your-local-registry-dnsname&gt;:&lt;your-local-registry-port&gt;
 
@@ -2748,7 +2747,7 @@ Additionally, ensure your certificate is present in the additionalTrustBundle fi
 additionalTrustBundle: | -----BEGIN CERTIFICATE----zzzzzzzzzzz -----END CERTIFICATE-------
 ```
 
-<!-- image -->
+
 
 ## IMPORTANT
 
@@ -2756,7 +2755,7 @@ The oc mirror command creates a folder called oc-mirror-workspace with several o
 
 - 5. Generate the cluster manifests by running the following command:
 
-<!-- image -->
+
 
 $ openshift-install agent create cluster-manifests
 
@@ -2770,7 +2769,7 @@ Create the required manifests for the multicluster engine Operator, the Local St
 
 - 1. Create a sub-folder named openshift in the &lt;assets\_directory&gt; folder. This sub-folder is used to store the extra manifests that will be applied during the installation to further customize the deployed cluster. The &lt;assets\_directory&gt; folder contains all the assets including the installconfig.yaml and agent-config.yaml files.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2822,7 +2821,7 @@ source: redhat-operators
 
 sourceNamespace: openshift-marketplace
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2876,7 +2875,7 @@ source: redhat-operators
 
 sourceNamespace: openshift-marketplace
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2917,7 +2916,7 @@ $ openshift-install agent create image --dir &lt;assets\_directory&gt;
 
 $ openshift-install agent wait-for install-complete --dir &lt;assets\_directory&gt;
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2947,7 +2946,7 @@ storageClassName: assisted-service volumeMode: Filesystem
 
 $ oc wait localvolume -n openshift-local-storage assisted-service --for condition=Available -timeout 10m
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -2957,7 +2956,7 @@ The `devicePath` is an example and may vary depending on the actual hardware con
 
 ## Example MultiClusterEngine.yaml
 
-<!-- image -->
+
 
 apiVersion: multicluster.openshift.io/v1 kind: MultiClusterEngine metadata:
 
@@ -3019,7 +3018,7 @@ The following tables specify the required and optional installation configuratio
 
 These values are specified in the install-config.yaml file.
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -3069,7 +3068,7 @@ networking:
 clusterNetwork: - cidr: 10.128.0.0/14 hostPrefix: 23 - cidr: fd00:10:128::/56 hostPrefix: 64 serviceNetwork: - 172.30.0.0/16 - fd00:172:16::/112
 ```
 
-<!-- image -->
+
 
 | Parameter                  | Description                                                 | Values                                                                                                                                                                   |
 |----------------------------|-------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -3084,7 +3083,7 @@ clusterNetwork: - cidr: 10.128.0.0/14 hostPrefix: 23 - cidr: fd00:10:128::/56 ho
 | The IP address block for services. The default value is  172.30.0.0/16 . The OVN-Kubernetes network plugins supports only a single IP address block for the service network. If you use the OVN-Kubernetes An array with an IP address block in                                  | CIDR format. For example: networking:   serviceNetwork:    - 172.30.0.0/16    - fd02::/112                                                                                                                                                      |
 | The IP address blocks for machines. If you specify multiple IP address blocks, the blocks must not overlap.                                                                                                                                                                      | An array of objects. For example: networking:   machineNetwork:   - cidr: 10.0.0.0/16                                                                                                                                                           |
 
-<!-- image -->
+
 
 | Parameter                               | Parameter                                                                                                                                                                                                                                                                                                | Description                                                                           | Values                                                                                    |
 |-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
@@ -3110,7 +3109,7 @@ Table 8.3. Optional parameters
 |             | compute:                                      | The configuration for the machines that comprise the compute nodes.                                                                                                                                                                                                                                                                      |
 |             | compute:   architecture:                      | Determines the instruction set architecture of the machines in the pool. Currently, clusters with varied architectures are not supported. All pools must specify the same architecture. Valid values are  amd64 ,  arm64 ppc64le ,  , and  s390x .                                                                                       |
 
-<!-- image -->
+
 
 | Parameter            | Parameter                  | Description                                                                                                                                                                                                                         | Values                                                                         |
 |----------------------|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
@@ -3122,7 +3121,7 @@ Table 8.3. Optional parameters
 |                      | featureSet:                | features using feature gates".                                                                                                                                                                                                      |                                                                                |
 |                      | controlPlane:              | The configuration for the machines that comprise the control plane.                                                                                                                                                                 | Array of  MachinePool  objects.                                                |
 
-<!-- image -->
+
 
 | Parameter                       | Description                                                                                                                                                                                                                                                                                        | Values                |    |
 |---------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|----|
@@ -3132,7 +3131,7 @@ Table 8.3. Optional parameters
 | controlPlane:   platform:       | baremetal vsphere ,                                                                                                                                                                                                                                                                                | , or  {}              |    |
 | controlPlane:   replicas:       | Use this parameter to specify the cloud provider that hosts the control plane machines. This parameter value must match the  compute.platform parameter value. The number of control plane machines to provision. Supported values are  3 4 5 ,  ,  , or  1  when deploying single-node OpenShift. |                       |    |
 
-<!-- image -->
+
 
 | Parameter        | Description                                                                                                                                                                                                                                  | Values                                                    |
 |------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
@@ -3149,9 +3148,9 @@ IMPORTANT
 | imageContentSour ces:   source:  | NOTE If you are using Azure File storage, you cannot enable FIPS mode. epositories that Required if you use  imageContentSources . Specify the repository that users refer to, for example, in image pull specifications. Specify one or more r                                                                                                                                                                                                           | String                                                                                                             |
 | imageContentSour ces:   mirrors: | may also contain the same images.                                                                                                                                                                                                                                                                                                                                                                                                                         | Array of strings                                                                                                   |
 
-<!-- image -->
 
-<!-- image -->
+
+
 
 | Parameter   | Description                                                                                                                          | Values                                                                                                          |    |
 |-------------|--------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|----|
@@ -3162,7 +3161,7 @@ IMPORTANT
 
 Additional bare metal installation configuration parameters for the Agent-based Installer are described in the following table:
 
-<!-- image -->
+
 
 ## NOTE
 
@@ -3212,7 +3211,7 @@ Table 8.5. Additional VMware vSphere cluster parameters
 | platform:   vsphere:     failureDomains:       topology:                     | The path to the vSphere compute cluster.                                                                                                                                                                                                                                                                                                  | String                                                                                                                                                                                                                                                                                                                                                   |          |
 | platform:   vsphere:     failureDomains:       topology:         datacenter: | Lists and defines the data centers where OpenShift Container Platform virtual machines (VMs) operate. The list of data centers must match the list of data centers specified in the  vcenters  field.                                                                                                                                     | String                                                                                                                                                                                                                                                                                                                                                   |          |
 
-<!-- image -->
+
 
 | Parameter                                                                      | Parameter                                                                                                                                                                                                                                                              | Description                                                                                                                                                                                                                                                                                                                                                                                                                        | Values                                                                                                                                                                                                                                                                                                                                                                                                                             |
 |--------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -3268,7 +3267,7 @@ The following tables specify the required and optional Agent configuration param
 
 These values are specified in the agent-config.yaml file.
 
-<!-- image -->
+
 
 ## NOTE
 
