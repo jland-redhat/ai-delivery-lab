@@ -97,11 +97,10 @@ seed_examples:
           You must use the output of either the oc adm release mirror command or the oc-mirror 
           plugin to configure the Agent-based Installer to use mirrored images.
 document_outline: |
-  Information about the Phoenix Constellation including the
-  history, characteristics, and features of the stars in the constellation.
+  Information about Openshift agent installations.
 document:
-  repo: https://github.com/juliadenham/Summit_knowledge
+  repo: https://https://github.com/jland-redhat/ai-delivery-lab/
   commit: 0a1f2672b9b90582e6115333e3ed62fd628f1c0f
   patterns:
-    - phoenix_constellation.md
+    - openshift.md
 
