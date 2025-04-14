@@ -51,20 +51,26 @@ seed_examples:
       Provisioning (ZTP) custom resources. ZTP allows you to provision new edge 
       sites with declarative configurations of bare-metal equipment.
     questions_and_answers:
-      - question: What are the supported architectures for the Agent Based Installer?
+      - question: |
+          What are the supported architectures for the Agent Based Installer?
         answer: |
           The supported architectures for the Agent Based Installer are 64-bit x86, 64-bit ARM, ppc64le, and s390x.
       - question: |
-          When is the phoenix constellation most visible?
+          How does the agent installer work?
         answer: |
-          Phoenix is most visible from locations such as Australia and
-          South Africa during late Southern Hemisphere spring.
+          The agent installer creates a bootable ISO that contains the Assisted discovery agent and the Assisted Service.
+          The ISO is mounted on the bare metal hosts to bootstrap the cluster.
       - question: |
-          What are the Phoenix Constellation boundaries?
+          Give me a detailed breakdown of how the installer works.
         answer: |
-          The official constellation boundaries for Phoenix, as set by Belgian
-          astronomer Eugène Delporte in 1930, are defined by a polygon of 10
-          segments.
+          One of the control plane hosts runs the Assisted Service at the start 
+          of the boot process and eventually becomes the bootstrap host. This node 
+          is called the rendezvous host (node 0). The Assisted Service ensures that 
+          all the hosts meet the requirements and triggers an OpenShift Container 
+          Platform cluster deployment. All the nodes have the Red Hat Enterprise Linux CoreOS (RHCOS) 
+          image written to the disk. The non-bootstrap nodes reboot and initiate a cluster deployment. 
+          Once the nodes are rebooted, the rendezvous host reboots and joins the cluster. 
+          The bootstrapping is complete and the cluster is deployed.
   - context: |
       You can use a mirror registry for disconnected installations and to 
       ensure that your clusters only use container images that satisfy your 
@@ -73,23 +79,23 @@ seed_examples:
       mirror the required container images into that environment. To mirror container 
       images, you must have a registry for mirroring.
     questions_and_answers:
-      - question: In the Phoenix constellation, how many stars have planets?
+      - question: How do I mirror openshift images?
         answer: |
-          In the Phoenix constellation, ten stars have been found to have
-          planets to date, and four planetary systems have been discovered
-          with the SuperWASP project.
+          Using the oc-mirror binary, you download openshift images from quay.io, save it locally
+          and bundle it in to a tar bundle.  Once you have your bundle, you will have to push
+          it in to your local repository to point your cluster at.
       - question: |
-          What is HD 142?
+          How do I point my cluster at my mirror registry?
         answer: |
-          HD 142 is a yellow giant that has an apparent magnitude of 5.7, and
-          has a planet (HD 142 b) 1.36 times the mass of Jupiter which
-          orbits every 328 days.
+          To use mirror images for a disconnected installation with the Agent-based Installer, 
+          you must modify the install-config.yaml file.You can mirror the release image by using 
+          the output of either the oc adm release mirror or oc mirror command. This is dependent 
+          on which command you used to set up the mirror registry.
       - question: |
-          Are WASP-4 and WASP-5 solar-type yellow stars?
+          How do you configure the Agent-based Installer to use mirrored images?
         answer: |
-          Yes, WASP-4 and WASP-5 are solar-type yellow stars around 1000 light
-          years distant and of 13th magnitude, each with a single planet
-          larger than Jupiter.
+          You must use the output of either the oc adm release mirror command or the oc-mirror 
+          plugin to configure the Agent-based Installer to use mirrored images.
 document_outline: |
   Information about the Phoenix Constellation including the
   history, characteristics, and features of the stars in the constellation.
