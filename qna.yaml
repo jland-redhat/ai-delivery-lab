@@ -1,0 +1,113 @@
+version: 3
+domain: Board Game Rules
+document_outline: |
+    The series of Rules related to the goard game Betrayal at House on the Hill (BaHotH).
+created_by: a_real_person
+seed_examples:
+  - question: After starting the haunt which player goes first?
+    answer: |
+      The player to the haunt revealer's left.
+  - question: What happens if a player is knocked unconscious?
+    answer: |
+      The player can't be knocked unconscious until after the haunt is revealed. But if one of their stats drops to a skull then they are out of the game until the haunt is over.
+  - question: How many dice do I roll for a haunt?
+    answer: |
+      When an Omen Card is draw the player rolls 6 dice
+  - question: How many event cards are there?
+    answer: |
+      45
+  - context: |
+      ## Haunts with a Hidden Traitor
+
+      A few of the haunts feature a hidden traitor , whose identity is secret from all the other players. When a haunt calls for a hidden traitor, count out small monster tokens of one color, numbered from 1 up to the number of players. Shuffle the tokens and deal out one to each player, face down (with the 'S' showing). Whoever gets the token numbered 1 is the traitor. Play continues clockwise from the person to the left of the haunt revealer.
+
+      Haunts with hidden traitors do not appear in the Traitor's Tome. Instead, the goal and abilities of the traitor are described under the haunt in Secrets of Survival , which everyone reads.
+
+      Unless the haunt says otherwise, the hidden traitor can reveal him- or herself to the others at any time by turning the token numbered 1 face up. (For example, the traitor might do this in response to a trap or a hazard in the house, to prevent the effect or damage using normal traitor rules.)
+
+      Whenever an explorer dies, that player turns over his or her token to reveal his or her identity. No other player (except the traitor) can reveal a face-down token at any time. You might say that you aren't a traitor, but the other players have only your word for it.
+
+      Unless the haunt says otherwise, any explorer can attack any other explorer at any time, under real or feigned suspicion of being the traitor. (Of course, the traitor benefits from sowing suspicion and mistrust among his or her fellow explorers.)
+
+      Unless the haunt says otherwise, everyone must converse only where everyone at the table can hear them; they can't leave and have side conversations elsewhere.
+    question_and_answers:
+      - question: What is a hidden traitor?
+        answer: |
+          A hidden traitor means the identity of the traitor is secret from all other players. There will be no entry in the hidden tome for the traitor, instead the hidden traitor's goal will be described in the Secrets of Survival book.
+      - question: How does a hidden traitor reveal themselves?
+        answer: |
+          Unless it says otherwise the hidden traitor can reveal themselves at any time. They may want to do this in order to take advantage of traitor rules to prevent something that would otherwise affect them.
+      - question: Can a hidden traitor attack other players?
+        answer: |
+          Yep, an explorer can attack any other explorer at any time unless the haunt says otherwise.
+  - context: |
+      ## OBJECT OF THE GAME
+
+      - 1 rulebook
+      - 2 haunt books ( Traitor's Tome and Secrets of Survival )
+
+      44 room tiles
+
+      - 1 Entrance Hall/Foyer/Grand Staircase tile
+      - 6 plastic explorer figures
+      - 6 two-sided character cards
+      - 30 plastic clips
+      - 8 dice
+      - 1 Turn/Damage track
+      - 13 omen cards
+      - 22 item cards
+      - 45 event cards
+      - 149 tokens, including:
+
+      12 large circular monster tokens 91 small circular monster tokens
+
+      (red, orange, yellow, green, blue, purple, magenta)
+
+      14 square event and room tokens
+
+      14 pentagonal item tokens
+
+      18 triangular Trait Roll tokens
+
+      Explore the house and make your explorer stronger until the haunt begins. After that, your goal is to complete your side's victory condition first, either as a traitor or a hero.
+    question_and_answers:
+      - question: How many room tiles are there?
+        answer: |
+          44
+      - question: How many omen cards are there?
+        answer: |
+          13
+      - question: How many monster tokens are there?
+        answer: |
+          91 small monster tokens and 12 large  ones
+  - context: |
+      ## Game Terms
+
+      This section defines certain game terms contained in this rulebook, the haunt booklets, and the various cards and tiles. A special game term is in bold the first time it appears.
+
+      adjacent: Rooms are adjacent if they share a side. Diagonal is never adjacent.
+
+      attack: Explorers (and monsters) can't attack until the haunt starts. Once during your turn after the haunt starts, you can make an attack roll against an opponent.
+      circular monster tokens
+      attack roll: You and your opponent both roll dice equal to your Might. Whoever gets the higher result inflicts physical damage against the loser equal to the difference (on a tie, no one gets hurt). See 'Make an Attack,' page 13.
+
+      distance attack: Some weapons or special items in a haunt allow you to attack an opponent in another room within your line of sight (see that entry, page 22). You take no damage if your attack roll is less than the opponent's.
+
+      card: There are three different types of cards: event, item, and omen. Explorers draw cards as they discover new rooms. Whenever you draw a card, read its text out loud and follow any instructions.
+
+      event card: An event card has a spiral symbol . After following its instructions, discard the card unless it says otherwise or has an ongoing effect.
+
+      item card: An item card has a bull's head symbol . Place it face up in front of you; you now have the item in your possession. See 'Use Item and Omen Cards,' page 11.
+
+      omen card: An omen card has a raven symbol . Place it face up in front of you; you now have the omen in your possession. You might have to do something immediately. At the end of your turn, if the haunt has not yet started, you must make a haunt roll. Most omens are like items.
+    question_and_answers:
+      - question: Can I attack another explorer before the haunt starts?
+        answer: |
+          No, explorers have to wait until the haunt starts.
+      - question: What are the different card types?
+        answer: |
+          There are three different types of cards: event, item, and omen.
+      - question: What does it mean if a room is adjacent?
+        answer: |
+          Shares a side with another room.
+      
