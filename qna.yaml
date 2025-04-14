@@ -3,6 +3,11 @@ domain: Board Game Rules
 document_outline: |
     The series of Rules related to the goard game Betrayal at House on the Hill (BaHotH).
 created_by: a_real_person
+document:
+  repo: https://github.com/jland-redhat/ai-delivery-lab.git
+  commit: 7526a3e27cbd26d7aa70e45f113edab0e6b0d4a9
+  patterns:
+    - knowledge.md
 seed_examples:
   - question: After starting the haunt which player goes first?
     answer: |
@@ -110,4 +115,61 @@ seed_examples:
       - question: What does it mean if a room is adjacent?
         answer: |
           Shares a side with another room.
+  - context: |
+      ## Special Rooms
+
+      Some room tiles have rules printed on them that summarize their effects. Most of those rooms have additional rules or further explanations described in this section. These tiles have an asterisk (*) printed beside the room's name.
+
+      ## Chasm, Catacombs, Vault, and Tower
+
+      These are all barrier rooms . A barrier room has two parts and can stop you from moving to the other side of the room. Crossing a barrier requires a trait roll printed on the tile (one of Might, Speed, Sanity, or Knowledge). You can attempt this roll once during your turn. Crossing the barrier doesn't count as moving a space. If you fail the roll, your movement ends. On your next turn, you may attempt another roll to cross, or you can go back the way you came.
+
+      Explorers can't fight or interact in any way with an explorer in the same room but on the opposite side of the barrier. Monsters always ignore barriers, but if a monster ends its movement in a barrier room, the traitor must decide which side of the barrier it's on.
+
+      If a tile or card causes you to land in a barrier room, you decide which side of the room to end up in. If the arrival requires placing a square token in the new room (such as with the Collapsed Room or the Secret Passage), then that token is permanently on the side of the room you chose.
+
+      ## Entrance Hall, Foyer, and Grand Staircase
+
+      The Entrance Hall, Foyer, and Grand Staircase are all on the same tile, but they count as three separate rooms. Moving from one room to an adjacent room on the tile counts as 1 space of movement. The Grand Staircase and the Upper Landing are two separate rooms.
+
+    question_and_answers:
+      - question: What are some examples of special rooms?
+        answer: |
+          Chasm, Catacombs, Vault, Tower, Entrance Hall, Foyer, Grand Staircase
+      - question: How do I make it to the other side of a barrier room?
+        answer: |
+          There will be information on the tile that normally requires a trait roll to make it to the other side of the Room
+      - question: How do I make it to the top floor?
+        answer: |
+          Moving up/down the Grand Staircase allows you to move between the Foyer and the Upper Landing.
       
+  - context: |
+      ## Traits
+
+      Each explorer has four traits , shown as lines of numbers on the character card: Might , Speed Knowledge , , and Sanity . Speed and Might are physical traits, while Sanity and Knowledge are mental traits.
+
+      Many cards, tiles, and other game effects adjust your traits up and down. When an effect increases or decreases a trait, you slide the plastic clip as many spaces as the effect says. For example, Zoe Ingstrom's starting Might is 3. If an effect increases her Might by 2, you would slide the clip 2 spaces toward the maximum value, raising her Might to 4. Each trait has a maximum value , the highest number in the line, which can't be exceeded even if an effect would increase it.
+
+
+
+
+
+      Each trait also has a skull symbol below its lowest number in the line. Once the haunt begins, if any of your traits drops to the skull symbol, your explorer dies. Before the haunt starts, no one can die-that is, no trait can go below its lowest number in the line (it stays at the lowest number instead).
+
+      Zoe's starting Sanity is 5. If an effect reduces her Sanity by 2, you would slide the clip 2 spaces toward the skull symbol, dropping her Sanity to 3. (If her Sanity drops by more than 2, Zoe will die unless the haunt has not yet begun.)
+
+
+
+      Damage: Many cards, tiles, and other game effects can deal damage to your explorer. When you take physical damage , you can divide it between Might and Speed as you choose. You slide the clips for those traits a total number of spaces equal to the amount of damage you took.
+
+      Attacks against Sanity or Knowledge deal mental damage . This works just like physical damage, but you divide the damage as you choose between Sanity and Knowledge instead of Might and Speed.
+    question_and_answers:
+      - question: What are the four traits of an explorer?
+        answer: |
+          The four traits are Might, Speed, Knowledge, and Sanity. Speed and Might are physical traits, while Sanity and Knowledge are mental traits.
+      - question: What happens if a trait drops to the skull symbol?
+        answer: |
+          If a trait drops to the skull symbol after the haunt begins, the explorer dies. Before the haunt starts, traits cannot drop below their lowest number.
+      - question: How do you adjust a trait during the game?
+        answer: |
+          You slide the plastic clip on the character card up or down based on the effect. Traits cannot exceed their maximum value or drop below their lowest value before the haunt begins.
